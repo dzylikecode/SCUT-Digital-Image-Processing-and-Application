@@ -47,11 +47,17 @@
     />
     <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <!-- End -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.14.3/dist/browser/index.min.js"></script>
     <style type="text/css">
       iframe {
         display: block;
         border: none;
         height: 75vh;
+        width: 100%;
+      }
+      .markmap {
         width: 100%;
       }
     </style>
@@ -61,7 +67,8 @@
     <script>
       var num = 0;
       mermaid.initialize({ startOnLoad: false });
-
+      markmapSvg = [];
+      const transformer = new markmap.Transformer();
       window.$docsify = {
         name: "Tree", // 目录的标题
         repo: "https://github.com/dzylikecode/SCUT-Digital-Image-Processing-and-Application", // 右上角的挂件
@@ -82,6 +89,17 @@
                   mermaid.render("mermaid-svg-" + num++, code) +
                   "</div>"
                 );
+              } else if (lang == "markmap") {
+                const { root: data } = transformer.transform(code);
+                let currentNum = num;
+                markmapSvg.push(() => {
+                  markmap.Markmap.create(
+                    `#markmap-svg-${currentNum}`,
+                    null,
+                    data
+                  );
+                });
+                return `<svg class="markmap" id="markmap-svg-${num++}"></svg>`;
               }
               return this.origin.code.apply(this, arguments);
             },
@@ -101,6 +119,9 @@
                   (m, g1, g2) => m.replace(g2, vm.route.path + "#" + g2)
                 )
               );
+            });
+            hook.doneEach(function () {
+              markmapSvg.forEach((fn) => fn());
             });
           },
         ],
