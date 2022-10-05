@@ -57,15 +57,12 @@
         height: 75vh;
         width: 100%;
       }
-      .markmap {
-        width: 100%;
-      }
     </style>
   </head>
   <body>
     <div id="app"></div>
     <script>
-      var num = 0;
+      let num = 0;
       mermaid.initialize({ startOnLoad: false });
       markmapSvg = [];
       const transformer = new markmap.Transformer();
@@ -92,12 +89,20 @@
               } else if (lang == "markmap") {
                 const { root: data } = transformer.transform(code);
                 let currentNum = num;
-                markmapSvg.push(() => {
-                  markmap.Markmap.create(
-                    `#markmap-svg-${currentNum}`,
-                    null,
-                    data
+                markmapSvg.push(function () {
+                  let elem = document.getElementById(
+                    "markmap-svg-" + currentNum
                   );
+                  const mm = new markmap.Markmap(elem, null);
+                  if (data) {
+                    mm.setData(data);
+                    const { minX, maxX, minY, maxY } = mm.state;
+                    const naturalWidth = maxY - minY;
+                    const naturalHeight = maxX - minX;
+                    elem.style.width = naturalWidth + "px";
+                    elem.style.height = naturalHeight + "px";
+                    mm.fit(); // always fit for the first render
+                  }
                 });
                 return `<svg class="markmap" id="markmap-svg-${num++}"></svg>`;
               }
@@ -108,6 +113,8 @@
         plugins: [
           function (hook, vm) {
             hook.beforeEach(function (html) {
+              num = 0;
+              markmapSvg = [];
               let url =
                 "https://github.com/dzylikecode/SCUT-Digital-Image-Processing-and-Application/blob/master/docs/" +
                 vm.route.file;
