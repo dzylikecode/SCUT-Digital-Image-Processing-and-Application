@@ -47,6 +47,9 @@
     />
     <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <!-- End -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.14.3/dist/browser/index.min.js"></script>
     <style type="text/css">
       iframe {
         display: block;
@@ -59,9 +62,10 @@
   <body>
     <div id="app"></div>
     <script>
-      var num = 0;
+      let num = 0;
       mermaid.initialize({ startOnLoad: false });
-
+      markmapSvg = [];
+      const transformer = new markmap.Transformer();
       window.$docsify = {
         name: "Tree", // 目录的标题
         repo: "https://github.com/dzylikecode/SCUT-Digital-Image-Processing-and-Application", // 右上角的挂件
@@ -82,6 +86,25 @@
                   mermaid.render("mermaid-svg-" + num++, code) +
                   "</div>"
                 );
+              } else if (lang == "markmap") {
+                const { root: data } = transformer.transform(code);
+                let currentNum = num;
+                markmapSvg.push(function () {
+                  let elem = document.getElementById(
+                    "markmap-svg-" + currentNum
+                  );
+                  const mm = new markmap.Markmap(elem, null);
+                  if (data) {
+                    mm.setData(data);
+                    const { minX, maxX, minY, maxY } = mm.state;
+                    const naturalWidth = maxY - minY;
+                    const naturalHeight = maxX - minX;
+                    elem.style.width = naturalWidth + "px";
+                    elem.style.height = naturalHeight + "px";
+                    mm.fit(); // always fit for the first render
+                  }
+                });
+                return `<svg class="markmap" id="markmap-svg-${num++}"></svg>`;
               }
               return this.origin.code.apply(this, arguments);
             },
@@ -90,6 +113,8 @@
         plugins: [
           function (hook, vm) {
             hook.beforeEach(function (html) {
+              num = 0;
+              markmapSvg = [];
               let url =
                 "https://github.com/dzylikecode/SCUT-Digital-Image-Processing-and-Application/blob/master/docs/" +
                 vm.route.file;
@@ -101,6 +126,9 @@
                   (m, g1, g2) => m.replace(g2, vm.route.path + "#" + g2)
                 )
               );
+            });
+            hook.doneEach(function () {
+              markmapSvg.forEach((fn) => fn());
             });
           },
         ],
