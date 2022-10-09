@@ -101,7 +101,9 @@ $$ s = ar + b $$
 
 ### 复合运算
 
-$$Q ( i , j ) = X \times P _ { 1 } ( i , j ) + ( 1 - X ) \times P _ { 2 } ( i , j )$$
+$$Q ( i , j ) = \alpha \times P _ { 1 } ( i , j ) + ( 1 - \alpha ) \times P _ { 2 } ( i , j )$$
+
+> $\alpha$为透明度
 
 ## 逻辑运算
 
