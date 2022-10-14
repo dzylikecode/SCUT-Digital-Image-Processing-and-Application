@@ -177,7 +177,9 @@ $[0, a]$和$[b, M_r]$被压缩了(对比上面的是完全被压缩了), 而感�
 
 ### 复合运算
 
-$$Q ( i , j ) = X \times P _ { 1 } ( i , j ) + ( 1 - X ) \times P _ { 2 } ( i , j )$$
+$$Q ( i , j ) = \alpha \times P _ { 1 } ( i , j ) + ( 1 - \alpha ) \times P _ { 2 } ( i , j )$$
+
+> $\alpha$为透明度
 
 ## 逻辑运算
 
