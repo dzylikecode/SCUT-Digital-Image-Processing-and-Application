@@ -85,7 +85,7 @@ Image Transform
 
 Continuous Fourier Transform
 
-### two demensional
+### two dimensional
 
 > 重点强调二维
 
@@ -103,7 +103,7 @@ $$\mathcal{F} ^ { - 1 } \{ F ( u , v ) \} = f ( x , y ) = \int _ { - \infty } ^ 
 
 Discrete Fourier Transform
 
-!> $\mathcal{R}$ is similiar to $\mathcal{F}$. It means discrete Fourier transform instead of the Real Numbers.
+!> $\mathcal{R}$ is similar to $\mathcal{F}$. It means discrete Fourier transform instead of Real Numbers.
 
 ### one dimensional
 
