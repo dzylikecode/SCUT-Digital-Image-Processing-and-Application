@@ -135,7 +135,7 @@ title('均值滤波')
 4. 合成彩图
 
 ```matlab
-Img=imread('up4-Amp.png');
+I=imread('up4-Amp.png');
 R=I(:,:,1);
 G=I(:,:,2);
 B=I(:,:,3);
