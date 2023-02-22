@@ -4,15 +4,15 @@
 
 - 数字图像的定义
 
-<img src="assets\2022-11-26-09-37-02-image.png" title="" alt="" width="526">
+<img class="Pages" src="assets\2022-11-26-09-37-02-image.png" title="" alt="" width="526">
 
 - 图像处理的过程
   
-  <img src="assets\2022-11-26-09-52-19-image.png" title="" alt="" width="488">
+  <img class="Pages" src="assets\2022-11-26-09-52-19-image.png" title="" alt="" width="488">
 
 - 图像处理的研究内容
   
-  <img src="assets\2022-11-26-09-54-20-image.png" title="" alt="" width="327">
+  <img class="Pages" src="assets\2022-11-26-09-54-20-image.png" title="" alt="" width="327">
 
 ## 第二章、数字图像处理的基础
 
@@ -36,15 +36,15 @@
 
 - 二值图像
   
-  <img title="" src="assets\2022-11-26-11-27-18-image.png" alt="" width="464">
+  <img class="Pages" title="" src="assets\2022-11-26-11-27-18-image.png" alt="" width="464">
 
 - 距离
   
-  <img src="assets\2022-11-26-11-12-57-image.png" title="" alt="" width="555">
+  <img class="Pages" src="assets\2022-11-26-11-12-57-image.png" title="" alt="" width="555">
 
 - 灰度级数和表示位数
   
-  <img title="" src="assets\2022-11-26-11-29-11-image.png" alt="" width="460">
+  <img class="Pages" title="" src="assets\2022-11-26-11-29-11-image.png" alt="" width="460">
 
 ## 第三章、图像基本运算的概述
 
@@ -134,17 +134,17 @@
 
 - 均值滤波：
   
-  - <img src="assets/2022-11-29-10-57-03-image.png" title="" alt="" width="429">
+  - <img class="Pages" src="assets/2022-11-29-10-57-03-image.png" title="" alt="" width="429">
     
-    <img title="" src="assets/2022-11-29-10-57-44-image.png" alt="" width="426">
+    <img class="Pages" title="" src="assets/2022-11-29-10-57-44-image.png" alt="" width="426">
 
 - 中值滤波
   
-  <img title="" src="assets/2022-11-29-10-59-15-image.png" alt="" width="454">
+  <img class="Pages" title="" src="assets/2022-11-29-10-59-15-image.png" alt="" width="454">
 
 - 最大值/最小值滤波
   
-  <img src="assets/2022-11-29-10-59-55-image.png" title="" alt="" width="458">
+  <img class="Pages" src="assets/2022-11-29-10-59-55-image.png" title="" alt="" width="458">
 
 ## 第七章、图像压缩
 
